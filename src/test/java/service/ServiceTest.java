@@ -8,10 +8,7 @@ import junit.framework.*;
 import repository.NotaXMLRepository;
 import repository.StudentXMLRepository;
 import repository.TemaXMLRepository;
-import validation.NotaValidator;
-import validation.StudentValidator;
-import validation.TemaValidator;
-import validation.Validator;
+import validation.*;
 
 /**
  * Unit test for simple service.Service.
@@ -44,5 +41,31 @@ public class ServiceTest extends TestCase{
 
     public void testSaveTemaFalse(){
         Assert.assertEquals(service.saveTema(null, "descriere2", 12, 1), 1);
+    }
+
+    public void addStudentValid(){
+        service.saveStudent("2", "titus", 934);
+    }
+
+    public void addStudentNullId(){
+        try {
+            service.saveStudent(null, "titus", 934);
+            fail();
+        }
+        catch(Exception e){}
+    }
+
+    public void addStudentNullName(){
+        try{
+            service.saveStudent("12", null, 934);
+            fail();
+        }catch(ValidationException e){}
+    }
+
+    public void addStudentEmptyName(){
+        try{
+            service.saveStudent("12", "", 934);
+            fail();
+        }catch (ValidationException e){}
     }
 }
