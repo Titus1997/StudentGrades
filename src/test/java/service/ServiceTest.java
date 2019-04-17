@@ -55,6 +55,14 @@ public class ServiceTest extends TestCase{
         catch(Exception e){}
     }
 
+    public void addStudentEmptyId(){
+        try{
+            service.saveStudent("", "titus", 934);
+            fail();
+        }
+        catch (Exception e){}
+    }
+
     public void addStudentNullName(){
         try{
             service.saveStudent("12", null, 934);
@@ -67,5 +75,21 @@ public class ServiceTest extends TestCase{
             service.saveStudent("12", "", 934);
             fail();
         }catch (ValidationException e){}
+    }
+
+    public void addStudentBigGroup(){
+        try{
+            service.saveStudent( "15", "titus", 999);
+            fail();
+        }
+        catch (ValidationException e){}
+    }
+
+    public void addStudentSmallGroup(){
+        try{
+            service.saveStudent( "15", "titus", 100);
+            fail();
+        }
+        catch (ValidationException e){}
     }
 }
