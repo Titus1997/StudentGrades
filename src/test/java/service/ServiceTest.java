@@ -70,4 +70,17 @@ public class ServiceTest extends TestCase{
     public void testaddStudentSmallGroup(){
         Assert.assertEquals(service.saveStudent( "15", "titus", 100), 1);
     }
+
+
+    public void testaddStudentBVAGroupSmallValid(){
+        Assert.assertEquals(service.saveStudent( "12", "titus", 111), 0);
+    }
+
+    public void testaddStudentBVAGroupSmallInvalid(){
+        Assert.assertEquals(service.saveStudent( "15", "titus", 110), 1);
+    }
+
+    public void testaddStudentBVAGroupBigValid(){
+        Assert.assertEquals(service.saveStudent( "15", "titus", 937), 0);
+    }
 }
