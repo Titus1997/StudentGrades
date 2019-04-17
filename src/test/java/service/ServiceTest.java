@@ -43,53 +43,31 @@ public class ServiceTest extends TestCase{
         Assert.assertEquals(service.saveTema(null, "descriere2", 12, 1), 1);
     }
 
-    public void addStudentValid(){
+    public void testaddStudentValid(){
         service.saveStudent("2", "titus", 934);
     }
 
-    public void addStudentNullId(){
-        try {
-            service.saveStudent(null, "titus", 934);
-            fail();
-        }
-        catch(Exception e){}
+    public void testaddStudentNullId(){
+        Assert.assertEquals(service.saveStudent( null, "titus", 934), 1);
     }
 
-    public void addStudentEmptyId(){
-        try{
-            service.saveStudent("", "titus", 934);
-            fail();
-        }
-        catch (Exception e){}
+    public void testaddStudentEmptyId(){
+        Assert.assertEquals(service.saveStudent( "", "titus", 934), 1);
     }
 
-    public void addStudentNullName(){
-        try{
-            service.saveStudent("12", null, 934);
-            fail();
-        }catch(ValidationException e){}
+    public void testaddStudentNullName(){
+        Assert.assertEquals(service.saveStudent( "12", null, 934), 1);
     }
 
-    public void addStudentEmptyName(){
-        try{
-            service.saveStudent("12", "", 934);
-            fail();
-        }catch (ValidationException e){}
+    public void testaddStudentEmptyName(){
+        Assert.assertEquals(service.saveStudent( "12", "", 934), 1);
     }
 
-    public void addStudentBigGroup(){
-        try{
-            service.saveStudent( "15", "titus", 999);
-            fail();
-        }
-        catch (ValidationException e){}
+    public void testaddStudentBigGroup(){
+        Assert.assertEquals(service.saveStudent( "15", "titus", 999), 1);
     }
 
-    public void addStudentSmallGroup(){
-        try{
-            service.saveStudent( "15", "titus", 100);
-            fail();
-        }
-        catch (ValidationException e){}
+    public void testaddStudentSmallGroup(){
+        Assert.assertEquals(service.saveStudent( "15", "titus", 100), 1);
     }
 }
