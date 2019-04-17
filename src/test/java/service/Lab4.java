@@ -37,7 +37,7 @@ public class Lab4 extends TestCase {
     public void testaddGradeBigBang(){
         service.saveTema("2", "desc", 10, 1);
         service.saveStudent("2", "titus", 934);
-        assertEquals(service.saveNota("2", "2", 9.8, 1, "alabalaportocala"), 0);
+        assertEquals(service.saveNota("2", "2", 8, 3, "alabalaportocala"), 1);
     }
 
     public void testaddStudentBigBang(){
